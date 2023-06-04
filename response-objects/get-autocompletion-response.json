@@ -1,23 +1,25 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "description": "A response for getting autocomplete container, which includes elements\n necessary for showing auto complete items for text field.",
-  "definitions": {
-    "getAutocompletionResponse": {
-      "$id": "/properties/getAutocompletionResponse",
-      "type": "object",
-      "required": ["autoComplete"],
-      "properties": {
-        "autoComplete": {
-          "type" : "object",
-          "$ref": "../card-interface/generic-card.json#/definitions/suggestions"
-        },
-        "schema": {
-          "type" : "string",
-          "description": "This is a no-op schema field that may be present in the markup for syntax checking."
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "A response for getting autocomplete container, which includes elements\n necessary for showing auto complete items for text field.",
+    "definitions": {
+        "getAutocompletionResponse": {
+            "$id": "/properties/getAutocompletionResponse",
+            "type": "object",
+            "required": [
+                "autoComplete"
+            ],
+            "properties": {
+                "autoComplete": {
+                    "type": "object",
+                    "$ref": "../card-interface/generic-card.json#/definitions/suggestions"
+                },
+                "schema": {
+                    "type": "string",
+                    "description": "This is a no-op schema field that may be present in the markup for syntax checking."
+                }
+            }
         }
-      }
-    }
-  },
-  "type": "object",
-  "$ref": "#/definitions/getAutocompletionResponse"
+    },
+    "type": "object",
+    "$ref": "#/definitions/getAutocompletionResponse"
 }

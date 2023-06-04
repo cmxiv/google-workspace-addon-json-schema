@@ -1,170 +1,170 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "definitions": {
-    "gmailClientActionMarkup": {
-      "$id": "/properties/gmailClientActionMarkup",
-      "type": "object",
-      "properties": {
-        "updateDraftActionMarkup": {
-          "type": "object",
-          "description": "Update Draft Action Markup",
-          "$ref": "#/definitions/updateDraftActionMarkup"
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "gmailClientActionMarkup": {
+            "$id": "/properties/gmailClientActionMarkup",
+            "type": "object",
+            "properties": {
+                "updateDraftActionMarkup": {
+                    "type": "object",
+                    "description": "Update Draft Action Markup",
+                    "$ref": "#/definitions/updateDraftActionMarkup"
+                },
+                "openCreatedDraftActionMarkup": {
+                    "type": "object",
+                    "description": "Open Created Draft Action Markup",
+                    "$ref": "#/definitions/openCreatedDraftActionMarkup"
+                }
+            }
         },
-        "openCreatedDraftActionMarkup": {
-          "type": "object",
-          "description": "Open Created Draft Action Markup",
-          "$ref": "#/definitions/openCreatedDraftActionMarkup"
-        }
-      }
-    },
-    "updateDraftActionMarkup": {
-      "$id" : "/properties/updateDraftActionMarkup",
-      "type": "object",
-      "properties": {
+        "updateDraftActionMarkup": {
+            "$id": "/properties/updateDraftActionMarkup",
+            "type": "object",
+            "properties": {
+                "updateBody": {
+                    "type": "object",
+                    "$ref": "#/definitions/updateBody"
+                },
+                "updateToRecipients": {
+                    "type": "object",
+                    "description": "Update To Recipients.",
+                    "$ref": "#/definitions/updateToRecipients"
+                },
+                "updateCcRecipients": {
+                    "type": "object",
+                    "description": "Update CC Recipients.",
+                    "$ref": "#/definitions/updateCcRecipients"
+                },
+                "updateBccRecipients": {
+                    "type": "object",
+                    "description": "Update BCC Recipients.",
+                    "$ref": "#/definitions/updateBccRecipients"
+                },
+                "updateSubject": {
+                    "type": "object",
+                    "description": "Update Subject",
+                    "$ref": "#/definitions/updateSubject"
+                }
+            }
+        },
         "updateBody": {
-          "type": "object",
-          "$ref": "#/definitions/updateBody"
+            "$id": "/properties/updateBody",
+            "type": "object",
+            "description": "A field which contains a series of updates action to perform on the draft\n body that user is currently editing.",
+            "properties": {
+                "insertContents": {
+                    "type": "array",
+                    "description": "A repeated field which contains a series of insert content to perform\n on the draft that user is currently editing. The content currently\n contains 1) HTML content or 2) plain text content.",
+                    "items": {
+                        "$ref": "#/definitions/insertContent"
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "IN_PLACE_INSERT"
+                    ]
+                }
+            }
+        },
+        "insertContent": {
+            "$id": "/properties/insertContent",
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string",
+                    "description": "The content to be inserted"
+                },
+                "contentType": {
+                    "type": "string",
+                    "description": "The type of inserted content",
+                    "enum": [
+                        "TEXT",
+                        "MUTABLE_HTML",
+                        "IMMUTABLE_HTML"
+                    ]
+                }
+            }
+        },
+        "recipient": {
+            "$id": "/properties/recipient",
+            "type": "object",
+            "description": "recipient",
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            }
         },
         "updateToRecipients": {
-          "type": "object",
-          "description": "Update To Recipients.",
-          "$ref": "#/definitions/updateToRecipients"
+            "$id": "/properties/updateToRecipients",
+            "description": "If set, replaces the existing To recipients of the draft the user is currently editing.",
+            "type": "object",
+            "properties": {
+                "toRecipients": {
+                    "type": "array",
+                    "description": "To Recipients",
+                    "items": {
+                        "$ref": "#/definitions/recipient"
+                    }
+                }
+            }
         },
         "updateCcRecipients": {
-          "type": "object",
-          "description": "Update CC Recipients.",
-          "$ref": "#/definitions/updateCcRecipients"
+            "$id": "/properties/updateCcRecipients",
+            "description": "If set, replaces the existing Cc recipients of the draft the user is currently editing.",
+            "type": "object",
+            "properties": {
+                "CcRecipients": {
+                    "type": "array",
+                    "description": "CC Recipients",
+                    "items": {
+                        "$ref": "#/definitions/recipient"
+                    }
+                }
+            }
         },
         "updateBccRecipients": {
-          "type": "object",
-          "description": "Update BCC Recipients.",
-          "$ref": "#/definitions/updateBccRecipients"
+            "$id": "/properties/updateBccRecipients",
+            "description": "If set, replaces the existing Bcc recipients of the draft the user is currently editing.",
+            "type": "object",
+            "properties": {
+                "BccRecipients": {
+                    "type": "array",
+                    "description": "BCC Recipients",
+                    "items": {
+                        "$ref": "#/definitions/recipient"
+                    }
+                }
+            }
         },
         "updateSubject": {
-          "type": "object",
-          "description": "Update Subject",
-          "$ref": "#/definitions/updateSubject"
-        }
-      }
-    },
-    "updateBody": {
-      "$id": "/properties/updateBody",
-      "type": "object",
-      "description": "A field which contains a series of updates action to perform on the draft\n body that user is currently editing.",
-      "properties": {
-        "insertContents": {
-          "type": "array",
-          "description": "A repeated field which contains a series of insert content to perform\n on the draft that user is currently editing. The content currently\n contains 1) HTML content or 2) plain text content.",
-          "items": {
-            "$ref": "#/definitions/insertContent"
-          }
+            "$id": "/properties/updateSubject",
+            "description": "If set, replaces the existing subject of the draft the user is currently editing.",
+            "type": "object",
+            "properties": {
+                "subject": {
+                    "type": "string"
+                }
+            }
         },
-        "type": {
-          "type": "string",
-          "description": "",
-          "enum": [
-            "IN_PLACE_INSERT"
-          ]
+        "openCreatedDraftActionMarkup": {
+            "type": "object",
+            "$id": "/properties/openCreatedDraftActionMarkup",
+            "description": "",
+            "properties": {
+                "draftId": {
+                    "type": "string",
+                    "description": "The ID of the newly-created draft in the form \"r123\"."
+                },
+                "draftThreadId": {
+                    "type": "string",
+                    "description": "The ID of the thread containing the newly-created draft, e.g., \"15e9fa622ce1029d\"."
+                }
+            }
         }
-      }
     },
-    "insertContent": {
-      "$id": "/properties/insertContent",
-      "type": "object",
-      "properties": {
-        "content": {
-          "type": "string",
-          "description": "The content to be inserted"
-        },
-        "contentType": {
-          "type": "string",
-          "description": "The type of inserted content",
-          "enum": [
-            "TEXT",
-            "MUTABLE_HTML",
-            "IMMUTABLE_HTML"
-          ]
-        }
-      }
-    },
-    "recipient": {
-      "$id": "/properties/recipient",
-      "type": "object",
-      "description": "recipient",
-      "properties": {
-        "email": {
-          "type": "string"
-        }
-      }
-    },
-    "updateToRecipients": {
-      "$id": "/properties/updateToRecipients",
-      "description": "If set, replaces the existing To recipients of the draft the user is currently editing.",
-      "type": "object",
-      "properties": {
-        "toRecipients": {
-          "type": "array",
-          "description": "To Recipients",
-          "items": {
-            "$ref": "#/definitions/recipient"
-          }
-        }
-      }
-    },
-    "updateCcRecipients": {
-      "$id": "/properties/updateCcRecipients",
-      "description": "If set, replaces the existing Cc recipients of the draft the user is currently editing.",
-      "type": "object",
-      "properties": {
-        "CcRecipients": {
-          "type": "array",
-          "description": "CC Recipients",
-          "items": {
-            "$ref": "#/definitions/recipient"
-          }
-        }
-      }
-    },
-    "updateBccRecipients": {
-      "$id": "/properties/updateBccRecipients",
-      "description": "If set, replaces the existing Bcc recipients of the draft the user is currently editing.",
-      "type": "object",
-      "properties": {
-        "BccRecipients": {
-          "type": "array",
-          "description": "BCC Recipients",
-          "items": {
-            "$ref": "#/definitions/recipient"
-          }
-        }
-      }
-    },
-    "updateSubject": {
-      "$id": "/properties/updateSubject",
-      "description": "If set, replaces the existing subject of the draft the user is currently editing.",
-      "type": "object",
-      "properties": {
-        "subject": {
-          "type": "string"
-        }
-      }
-    },
-    "openCreatedDraftActionMarkup": {
-      "type": "object",
-      "$id": "/properties/openCreatedDraftActionMarkup",
-      "description": "",
-      "properties": {
-        "draftId": {
-          "type": "string",
-          "description": "The ID of the newly-created draft in the form \"r123\"."
-        },
-        "draftThreadId": {
-          "type": "string",
-          "description": "The ID of the thread containing the newly-created draft, e.g., \"15e9fa622ce1029d\"."
-        }
-      }
-    }
-  },
-  "type": "object",
-  "$ref": "#/definitions/gmailClientActionMarkup"
+    "type": "object",
+    "$ref": "#/definitions/gmailClientActionMarkup"
 }

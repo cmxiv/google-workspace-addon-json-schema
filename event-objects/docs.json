@@ -1,0 +1,37 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "definitions": {
+        "docsEventObject": {
+            "$id": "/properties/docsEventObject",
+            "type": "object",
+            "description": "The Docs event object is the portion of the overall event object that carries information about a user's Google Docs document. It's only present in an event object if the host application is Google Docs.",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the document open in the Docs UI"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the document open in the Docs UI"
+                },
+                "matchedUrl": {
+                    "$id": "/properties/matchedUrlObject",
+                    "type": "object",
+                    "description": "Object that contains the URL that matches the pattern set in the link preview trigger."
+                    "properties": {
+                        "url": {
+                            "type": "string",
+                            "description": "URL that matches the pattern set in the link preview trigger."
+                        }
+                    }
+                },
+                "addonHasFileScopePermission": {
+                    "type": "boolean",
+                    "description": " Whether or not the add-on has drive.file scope permission for this document."
+                }
+            }
+        }
+    },
+    "$ref": "#/definitions/docsEventObject"
+}

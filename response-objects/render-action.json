@@ -1,90 +1,90 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "description": "The response to the invocation of the add-on. The most common response will contain a navigation for cards - e.g. pushing a card to render content.",
-  "definitions": {
-    "notification": {
-      "$id": "/properties/notification",
-      "type": "object",
-      "description": "Card action which displays a notification in the host app.",
-      "properties":{
-        "text": {
-          "type": "string",
-          "description": "Plain text to display for the notification, without html tags."
-        }
-      }
-    },
-    "navigation": {
-      "$id": "/properties/navigation",
-      "type": "object",
-      "properties": {
-        "popToRoot": {
-          "type" : "boolean",
-          "description": "Card stack pops all card off except the root card."
-        },
-        "pop": {
-          "type" : "boolean",
-          "description": "Card stack pops one card off."
-        },
-        "popToCard": {
-          "type" : "string",
-          "description": "Card stack pops all cards above the specified card with given card name."
-        },
-        "pushCard": {
-          "type" : "object",
-          "description": "A card to push on top of the stack, which will be shown to end users.",
-          "$ref": "../card-interface/generic-card.json#/definitions/card"
-        },
-        "updateCard": {
-          "type" : "object",
-          "description": "Card stack updates the top card with a new card, preserving filled form\nfields values. For non-equivalent field, the value is dropped.",
-          "$ref": "../card-interface/generic-card.json#/definitions/card"
-        }
-      }
-    },
-    "action": {
-      "$id": "/properties/action",
-      "type": "object",
-      "description": "Google Workspace add-on response to interact with the end user. The most common interaction is to render a card with a navigation.",
-      "properties": {
-        "navigations": {
-          "description": "Specify the navigation within the card stack.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/navigation"
-          }
-        },
-        "link": {
-          "type": "object",
-          "description": "Immediately open the target link in a new tab or a popup.",
-          "$ref": "../card-interface/generic-card.json#/definitions/openLink"
-        },
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "The response to the invocation of the add-on. The most common response will contain a navigation for cards - e.g. pushing a card to render content.",
+    "definitions": {
         "notification": {
-          "type": "object",
-          "description": "Display a notification to the end-user.",
-          "$ref": "#/definitions/notification"
-        }
-      }
-    },
-    "renderAction": {
-      "type": "object",
-      "properties": {
+            "$id": "/properties/notification",
+            "type": "object",
+            "description": "Card action which displays a notification in the host app.",
+            "properties": {
+                "text": {
+                    "type": "string",
+                    "description": "Plain text to display for the notification, without html tags."
+                }
+            }
+        },
+        "navigation": {
+            "$id": "/properties/navigation",
+            "type": "object",
+            "properties": {
+                "popToRoot": {
+                    "type": "boolean",
+                    "description": "Card stack pops all card off except the root card."
+                },
+                "pop": {
+                    "type": "boolean",
+                    "description": "Card stack pops one card off."
+                },
+                "popToCard": {
+                    "type": "string",
+                    "description": "Card stack pops all cards above the specified card with given card name."
+                },
+                "pushCard": {
+                    "type": "object",
+                    "description": "A card to push on top of the stack, which will be shown to end users.",
+                    "$ref": "../card-interface/generic-card.json#/definitions/card"
+                },
+                "updateCard": {
+                    "type": "object",
+                    "description": "Card stack updates the top card with a new card, preserving filled form\nfields values. For non-equivalent field, the value is dropped.",
+                    "$ref": "../card-interface/generic-card.json#/definitions/card"
+                }
+            }
+        },
         "action": {
-          "type": "object",
-          "$ref": "#/definitions/action",
-          "description": "Google Workspace add-on response to interact with the end user. The most common interaction is to render a card with a navigation."
+            "$id": "/properties/action",
+            "type": "object",
+            "description": "Google Workspace add-on response to interact with the end user. The most common interaction is to render a card with a navigation.",
+            "properties": {
+                "navigations": {
+                    "description": "Specify the navigation within the card stack.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/navigation"
+                    }
+                },
+                "link": {
+                    "type": "object",
+                    "description": "Immediately open the target link in a new tab or a popup.",
+                    "$ref": "../card-interface/generic-card.json#/definitions/openLink"
+                },
+                "notification": {
+                    "type": "object",
+                    "description": "Display a notification to the end-user.",
+                    "$ref": "#/definitions/notification"
+                }
+            }
         },
-        "hostAppAction": {
-          "type":"object",
-          "description": "Actions handled by individual host apps.",
-          "$ref": "host-app-action-markup.json#/definitions/hostAppActionMarkup"
-        },
-        "schema": {
-          "type": "string",
-          "description": "This is a no-op schema field that may be present in the markup for syntax\n checking."
+        "renderAction": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "object",
+                    "$ref": "#/definitions/action",
+                    "description": "Google Workspace add-on response to interact with the end user. The most common interaction is to render a card with a navigation."
+                },
+                "hostAppAction": {
+                    "type": "object",
+                    "description": "Actions handled by individual host apps.",
+                    "$ref": "host-app-action-markup.json#/definitions/hostAppActionMarkup"
+                },
+                "schema": {
+                    "type": "string",
+                    "description": "This is a no-op schema field that may be present in the markup for syntax\n checking."
+                }
+            }
         }
-      }
-    }
-  },
-  "type": "object",
-  "$ref": "#/definitions/renderAction"
+    },
+    "type": "object",
+    "$ref": "#/definitions/renderAction"
 }
