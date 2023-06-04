@@ -9,7 +9,7 @@
       "properties": {
         "autoComplete": {
           "type" : "object",
-          "$ref": "generic-card.json#/definitions/suggestions"
+          "$ref": "../card-interface/generic-card.json#/definitions/suggestions"
         },
         "schema": {
           "type" : "string",

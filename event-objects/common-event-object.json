@@ -15,7 +15,7 @@
             "description": "Set for requests to HTTP endpoints"
           },
           "gmail": {
-            "$ref": "./gmail-event-object.json#/definitions/gmailEventObject",
+            "$ref": "gmail-event-object.json#/definitions/gmailEventObject",
             "description": "An object containing Gmail information."
           },
           "drive": {
@@ -27,11 +27,11 @@
             "description": "An object containing Docs information."
           },
           "sheets": {
-            "$ref": "./google-sheets-event-object.json#/definitions/sheetsEventObject",
+            "$ref": "google-sheets-event-object.json#/definitions/sheetsEventObject",
             "description": "An object containing Sheets information."
           },
           "slides": {
-            "$ref": "./google-slides-event-object.json#/definitions/slidesEventObject",
+            "$ref": "google-slides-event-object.json#/definitions/slidesEventObject",
             "description": "An object containing Slides information."
           },
           "calendar": {

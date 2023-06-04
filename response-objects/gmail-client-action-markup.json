@@ -48,7 +48,7 @@
       }
     },
     "updateBody": {
-      "$id": "/prioperties/updateBody",
+      "$id": "/properties/updateBody",
       "type": "object",
       "description": "A field which contains a series of updates action to perform on the draft\n body that user is currently editing.",
       "properties": {
@@ -69,7 +69,7 @@
       }
     },
     "insertContent": {
-      "$id": "/prioperties/insertContent",
+      "$id": "/properties/insertContent",
       "type": "object",
       "properties": {
         "content": {

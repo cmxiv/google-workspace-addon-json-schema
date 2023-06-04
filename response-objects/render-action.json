@@ -32,12 +32,12 @@
         "pushCard": {
           "type" : "object",
           "description": "A card to push on top of the stack, which will be shown to end users.",
-          "$ref": "generic-card.json#/definitions/card"
+          "$ref": "../card-interface/generic-card.json#/definitions/card"
         },
         "updateCard": {
           "type" : "object",
           "description": "Card stack updates the top card with a new card, preserving filled form\nfields values. For non-equivalent field, the value is dropped.",
-          "$ref": "generic-card.json#/definitions/card"
+          "$ref": "../card-interface/generic-card.json#/definitions/card"
         }
       }
     },
@@ -56,7 +56,7 @@
         "link": {
           "type": "object",
           "description": "Immediately open the target link in a new tab or a popup.",
-          "$ref": "generic-card.json#/definitions/openLink"
+          "$ref": "../card-interface/generic-card.json#/definitions/openLink"
         },
         "notification": {
           "type": "object",
