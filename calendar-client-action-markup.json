@@ -20,7 +20,7 @@
       "properties": {
         "setConferenceData": {
           "type": "object",
-          "$ref": "./conferenceDataMarkupSchema.json#/definitions/conferenceDataMarkup"
+          "$ref": "./conference-data-markup-schema.json#/definitions/conferenceDataMarkup"
         }
       }
     },

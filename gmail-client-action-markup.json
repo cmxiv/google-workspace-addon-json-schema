@@ -8,12 +8,12 @@
         "updateDraftActionMarkup": {
           "type": "object",
           "description": "Update Draft Action Markup",
-          "$ref": "#definitions/updateDraftActionMarkup"
+          "$ref": "#/definitions/updateDraftActionMarkup"
         },
         "openCreatedDraftActionMarkup": {
           "type": "object",
           "description": "Open Created Draft Action Markup",
-          "$ref": "#definitions/openCreatedDraftActionMarkup"
+          "$ref": "#/definitions/openCreatedDraftActionMarkup"
         }
       }
     },
@@ -43,7 +43,7 @@
         "updateSubject": {
           "type": "object",
           "description": "Update Subject",
-          "$ref": "#definitions/updateSubject"
+          "$ref": "#/definitions/updateSubject"
         }
       }
     },
@@ -56,7 +56,7 @@
           "type": "array",
           "description": "A repeated field which contains a series of insert content to perform\n on the draft that user is currently editing. The content currently\n contains 1) HTML content or 2) plain text content.",
           "items": {
-            "$ref": "#definitions/insertContent"
+            "$ref": "#/definitions/insertContent"
           }
         },
         "type": {

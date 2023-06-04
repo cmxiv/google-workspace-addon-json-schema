@@ -10,13 +10,13 @@
         "activeCursorItem": {
           "type": "object",
           "description": "The Drive item currently active.",
-          "$ref": "#definitions/driveItemMetaData"
+          "$ref": "#/definitions/driveItemMetaData"
         },
         "selectedItems": {
           "type":"array",
           "description": "A list of items (files or folders) selected in Drive.",
           "items": {
-            "$ref": "#definitions/driveItemMetaData"
+            "$ref": "#/definitions/driveItemMetaData"
           }
         }
       }
