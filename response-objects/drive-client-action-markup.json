@@ -1,4 +1,5 @@
 {
+    "$id": "https://tandosid.dev/response-objects/drive-client-action-markup.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "definitions": {
         "driveClientActionMarkup": {

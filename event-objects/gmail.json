@@ -1,4 +1,5 @@
 {
+    "$id": "https://tandosid.dev/event-objects/gmail.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
     "definitions": {
