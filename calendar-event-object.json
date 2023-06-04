@@ -33,13 +33,13 @@
           "type": "array",
           "description": "A list of the attendees of the calendar event.",
           "items": {
-            "$ref": "#definitions/attendee"
+            "$ref": "#/definitions/attendee"
           }
         },
         "conferenceData": {
           "type": "object",
           "description": "An object representing any conference data associated with this event, such as Google Meet conference details.",
-          "$ref": "#definitions/conferenceData"
+          "$ref": "#/definitions/conferenceData"
         },
         "capabilities": {
           "type": "object",

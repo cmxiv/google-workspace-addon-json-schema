@@ -15,27 +15,27 @@
             "description": "Set for requests to HTTP endpoints"
           },
           "gmail": {
-            "$ref": "./gmail_event_object_schema.json#/definitions/gmailEventObject",
+            "$ref": "./gmail-event-object.json#/definitions/gmailEventObject",
             "description": "An object containing Gmail information."
           },
           "drive": {
-            "$ref": "./drive_event_object_schema.json#/definitions/driveEventObject",
+            "$ref": "drive-event-object.json#/definitions/driveEventObject",
             "description": "An object containing Drive information."
           },
           "docs": {
-            "$ref": "./docs_event_object_schema.json#/definitions/docsEventObject",
+            "$ref": "docs-event-object.json#/definitions/docsEventObject",
             "description": "An object containing Docs information."
           },
           "sheets": {
-            "$ref": "./sheets_event_object_schema.json#/definitions/sheetsEventObject",
+            "$ref": "./google-sheets-event-object.json#/definitions/sheetsEventObject",
             "description": "An object containing Sheets information."
           },
           "slides": {
-            "$ref": "./slides_event_object_schema.json#/definitions/slidesEventObject",
+            "$ref": "./google-slides-event-object.json#/definitions/slidesEventObject",
             "description": "An object containing Slides information."
           },
           "calendar": {
-            "$ref": "./calendar_event_object_schema.json#/definitions/calendarEventObject",
+            "$ref": "calendar-event-object.json#/definitions/calendarEventObject",
             "description": "An object containing calendar and event information."
           }
         }

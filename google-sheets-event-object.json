@@ -2,8 +2,8 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "definitions": {
-    "docsEventObject": {
-      "$id": "/properties/docsEventObject",
+    "sheetsEventObject": {
+      "$id": "/properties/sheetsEventObject",
       "type": "object",
       "description": "The Docs event object is the portion of the overall event object that carries information about a user's Google Sheet and its contents. It's only present in an event object if the host application is Google Sheets.",
       "properties": {
@@ -22,5 +22,5 @@
       }
     },
   },
-  "$ref": "#/definitions/docsEventObject"
+  "$ref": "#/definitions/sheetsEventObject"
 }

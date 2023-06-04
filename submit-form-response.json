@@ -9,7 +9,7 @@
       "properties": {
         "renderActions": {
           "type" : "object",
-          "$ref": "./renderActionSchema.json#/definitions/renderAction"
+          "$ref": "render-action.json#/definitions/renderAction"
         },
         "stateChanged": {
           "type" : "boolean",
