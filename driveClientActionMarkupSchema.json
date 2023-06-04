@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "driveClientActionMarkup": {
+      "$id": "/properties/driveClientActionMarkup",
+      "type": "object",
+      "properties": {
+        "requestFileScope": {
+          "type": "object",
+          "properties": {
+            "itemId": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "$ref": "#/definitions/driveClientActionMarkup"
+}

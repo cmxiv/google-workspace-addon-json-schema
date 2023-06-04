@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "editAttendeesActionMarkup": {
+      "$id": "/properties/editAttendeesActionMarkup",
+      "type": "object",
+      "properties": {
+        "addAttendeeEmails": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": ""
+    },
+    "editConferenceDataActionMarkup": {
+      "$id": "/properties/editConferenceDataActionMarkup",
+      "type": "object",
+      "properties": {
+        "setConferenceData": {
+          "type": "object",
+          "$ref": "./conferenceDataMarkupSchema.json#/definitions/conferenceDataMarkup"
+        }
+      }
+    },
+    "calendarClientActionMarkup": {
+      "$id": "/properties/calendarClientActionMarkup",
+      "type": "object",
+      "properties": {
+        "editAttendeesActionMarkup": {
+          "type": "object",
+          "description": "",
+          "$ref": "#/definitions/editAttendeesActionMarkup"
+        },
+        "editConferenceDataActionMarkup": {
+          "type": "object",
+          "description": "",
+          "$ref": "#/definitions/editConferenceDataActionMarkup"
+        }
+      }
+    }
+  },
+  "type": "object",
+  "$ref": "#/definitions/calendarClientActionMarkup"
+}

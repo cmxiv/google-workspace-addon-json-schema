@@ -1,0 +1,814 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "The card object used to build UIs for Google Workspace add-ons.",
+  "definitions": {
+    "textParagraph": {
+      "$id": "/properties/textParagraph",
+      "type": "object",
+      "description": "Text paragraph widget.",
+      "required": [
+        "text"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "The text of the paragraph. Can contain formatted text."
+        }
+      }
+    },
+    "image": {
+      "$id": "/properties/image",
+      "type": "object",
+      "description": "Image widget.",
+      "required": [
+        "imageUrl"
+      ],
+      "properties": {
+        "imageUrl": {
+          "type": "string",
+          "description": "Sets the image to use by providing its URL or data string."
+        },
+        "altText": {
+          "type": "string",
+          "description": "Sets the alternative text of the image for accessibility."
+        },
+        "onClick": {
+          "type": "object",
+          "description": "Sets an action that executes when the object is clicked.",
+          "$ref": "#/definitions/onClick"
+        }
+      }
+    },
+    "icon": {
+      "$id": "/properties/icon",
+      "type": "object",
+      "description": "The icon, can be specified by KnownIcon string or a URL.",
+      "oneOf": [
+        {
+          "properties": {
+            "knownIcon": {
+              "type": "string",
+              "description": "The icon specified by the string name of a list of known icons"
+            },
+            "iconUrl": {
+              "type": "string",
+              "description": "The icon specified by a URL."
+            }
+          }
+        }
+      ],
+      "properties": {
+        "altText": {
+          "type": "string",
+          "description": "The description of icon which is used for accessibility."
+        }
+      }
+    },
+    "divider": {
+      "$id": "/properties/divider",
+      "type": "object",
+      "description": "A horizontal divider."
+    },
+    "button": {
+      "$id": "/properties/button",
+      "type": "object",
+      "description": "A button. Can be a text button or an image button.",
+      "required": ["onClick", "text"],
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "The text of the button."
+        },
+        "icon": {
+          "type": "object",
+          "description": "The icon image",
+          "$ref": "#/definitions/icon"
+        },
+        "color": {
+          "type": "object",
+          "description": "If set, the button is filled with solid background.",
+          "$ref": "#/definitions/color"
+        },
+        "onClick": {
+          "type": "object",
+          "description": "The onClick action of the button.",
+          "$ref": "#/definitions/onClick"
+        },
+        "disabled": {
+          "type": "boolean",
+          "description": "If true, the button is displayed in a disabled state and doesn't respond to user actions"
+        }
+      }
+    },
+    "buttonList": {
+      "$id": "/properties/buttonList",
+      "type": "object",
+      "properties": {
+        "buttons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/button"
+          },
+          "description": "A list of buttons laid out horizontally"
+        }
+      }
+    },
+    "decoratedText": {
+      "$id": "/properties/decoratedText",
+      "type": "object",
+      "required": [
+        "text"
+      ],
+      "properties": {
+        "button" : {
+          "type": "object",
+          "description": "A button that can be clicked to trigger an action",
+          "$ref": "#/definitions/button"
+        },
+        "switchControl": {
+          "type": "object",
+          "description": "A switch widget can be clicked to change its state or trigger an action.",
+          "$ref": "#/definitions/switchControl"
+        },
+        "icon": {
+          "type": "object",
+          "description": "The icon displayed in front of the text.",
+          "$ref": "#/definitions/icon"
+        },
+        "imageType": {
+          "type": "string",
+          "enum": [
+            "SQUARE",
+            "CIRCLE"
+          ],
+          "description": "Define the cropping of the image."
+        },
+        "topLabel": {
+          "type": "string",
+          "description": "The formatted text label that shows above the main text."
+        },
+        "text": {
+          "type": "string",
+          "description": "The main widget formatted text."
+        },
+        "wrapText": {
+          "type": "boolean",
+          "description": "The wrap text setting. If true, the text is wrapped and displayed in multiline.\nOtherwise the text is truncated."
+        },
+        "bottomLabel": {
+          "type": "string",
+          "description": "The formatted text label that shows below the main text."
+        },
+        "onClick": {
+          "type": "object",
+          "description": "Only the top/bottom label + content region is clickable.",
+          "$ref": "#/definitions/onClick"
+        }
+      }
+    },
+    "switchControl": {
+      "$id": "/properties/switchControl",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the switch widget which is used in formInput."
+        },
+        "value": {
+          "type": "string",
+          "description": "The value is what is passed back in the Apps Script callback."
+        },
+        "selected": {
+          "type": "boolean",
+          "description": "If the switch is selected."
+        },
+        "onChangeAction": {
+          "type": "object",
+          "description": "The action when the switch state is changed.",
+          "$ref": "#/definitions/action"
+        },
+        "controlType": {
+          "type": "string",
+          "description": "The control type, it could be either Switch or Checkbox.",
+          "enum": [
+            "SWITCH",
+            "CHECKBOX"
+          ]
+        }
+      }
+    },
+    "onClick": {
+      "$id": "/properties/onClick",
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "object",
+          "$ref": "#/definitions/action",
+          "description": "An action is triggered by this onClick, if specified."
+        },
+        "openLink": {
+          "type": "object",
+          "$ref": "#/definitions/openLink",
+          "description": "This onClick triggers an open link action if specified."
+        },
+        "openDynamicLinkAction": {
+          "type": "object",
+          "$ref": "#/definitions/action",
+          "description": "An add-on triggers this action when the action needs to open a link.\nThis differs from the openLink above in that this needs to talk to server to get the link.\nThus some preparation work is required for web client to do before the open link action response comes back."
+        },
+        "card": {
+          "type": "object",
+          "$ref": "#/definitions/card",
+          "description": "A new card is pushed to the card stack after clicking if specified."
+        }
+      }
+    },
+    "openLink": {
+      "$id": "/properties/openLink",
+      "description": "Opens a URL",
+      "required": ["url"],
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "The URL to open."
+        },
+        "openAs": {
+          "type": "string",
+          "description": "When an onClick opens a link, then the client can either open it as a \n full size (window if that is the frame used by the client), or an \n overlay (such as a pop-up). The implementation depends on the client\nplatform capabilities, and the value selected may be ignored if the\nclient does not support it. FULL_SIZE is supported by all clients.",
+          "enum": [
+            "FULL_SIZE",
+            "OVERLAY"
+          ]
+        },
+        "onClose": {
+          "type": "string",
+          "enum": [
+            "NOTHING",
+            "RELOAD"
+          ]
+        }
+      }
+    },
+    "textInput": {
+      "$id": "/properties/textInput",
+      "type": "object",
+      "description": "A text input is a UI item where the users can input text.",
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the text input which is used in formInput."
+        },
+        "label": {
+          "type": "string",
+          "description": "At least one of label and hintText is required to be specified."
+        },
+        "hintText": {
+          "type": "string",
+          "description": "The hint text."
+        },
+        "value": {
+          "type": "string",
+          "description": "The default value when no input from user."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "SINGLE_LINE",
+            "MULTIPLE_LINE"
+          ],
+          "description": "The style of the text (for example, single line or multiple line)."
+        },
+        "onChangeAction": {
+          "type": "object",
+          "description": "The onChange action (for example, invoke an Apps Script)",
+          "$ref": "#/definitions/action"
+        },
+        "initialSuggestions": {
+          "type": "object",
+          "description": "The initial suggestions made before any user input",
+          "$ref": "#/definitions/suggestions"
+        },
+        "autoCompleteAction": {
+          "type": "object",
+          "$ref": "#/definitions/action",
+          "description": "The refresh function which returns suggestions based on the user's input text."
+        },
+        "multipleSuggestions": {
+          "type": "boolean",
+          "description": "When set to true, a user can input multiple suggestions items."
+        }
+      }
+    },
+    "suggestions": {
+      "$id": "/properties/suggestions",
+      "description": "A container wrapping elements necessary for showing suggestion items used in text input autocomplete.",
+      "properties": {
+        "items": {
+          "type": "array",
+          "description": "A list of suggestion items which will be used in are used in autocomplete.",
+          "items": {
+            "$ref": "#/definitions/suggestionItem"
+          }
+        }
+      }
+    },
+    "suggestionItem": {
+      "$id": "/properties/suggestionItem",
+      "type": "object",
+      "description": "A Suggestion Item. Only supports text for now.",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "Text."
+        }
+      }
+    },
+    "selectionInput": {
+      "$id": "/properties/selectionInput",
+      "description": "A widget which creates a UI item (for example, a drop-down list) with options for users to select.",
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": ""
+        },
+        "label": {
+          "type": "string",
+          "description": "The label displayed ahead of the switch control."
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of the selection.",
+          "enum": [
+            "CHECK_BOX",
+            "RADIO_BUTTON",
+            "SWITCH",
+            "DROPDOWN"
+          ]
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/selectionItem"
+          },
+          "description": "The item/items in the switch control."
+        },
+        "onChangeAction": {
+          "type": "object",
+          "description": "If specified, form is submitted when selection changes",
+          "$ref": "#/definitions/action"
+        }
+      }
+    },
+    "selectionItem": {
+      "type":"object",
+      "$id": "/properties/selectionItem",
+      "description": "The item in the switch control.",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "The text to be displayed"
+        },
+        "value": {
+          "type": "string",
+          "description": "The value associated with this item which is sent back to Apps Script.\nThe client should use this as a form input value."
+        },
+        "selected": {
+          "type": "boolean",
+          "description": "If more than one items are selected for RADIO_BUTTON or DROPDOWN,\nthe first selected item is treated as selected and the after ones are all ignored."
+        }
+      }
+    },
+    "dateTimePicker": {
+      "$id": "/properties/dateTimePicker",
+      "description": "The widget to allow users to specify date and time",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the text input which is used in formInput, and uniquely identifies this input."
+        },
+        "label": {
+          "type": "string",
+          "description": "The label for the field, which is displayed to the user."
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of the date time picker.",
+          "enum": [
+            "DATE_AND_TIME",
+            "DATE_ONLY",
+            "TIME_ONLY"
+          ]
+        },
+        "valueMsEpoch": {
+          "type": "number",
+          "description": "The value to display which can be the default value before user input or previous user input.\nIt is represented in milliseconds (Epoch time)"
+        },
+        "timezoneOffsetDate": {
+          "type": "number",
+          "description": "The number representing the time-zone offset from UTC, in minutes."
+        },
+        "onChangeAction": {
+          "type": "object",
+          "description": "Triggered when the user clicks on the Save, or Clear button from the date time picker dialog.",
+          "$ref": "#/definitions/action"
+        }
+      }
+    },
+    "borderStyle": {
+      "$id": "/properties/borderStyle",
+      "type": "object",
+      "description": "A border style.",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The border type.",
+          "enum": [
+            "NO_BORDER",
+            "STROKE"
+          ]
+        },
+        "strokeColor": {
+          "description": "The border color.",
+          "$ref": "#/definitions/color"
+        },
+        "cornerRadius": {
+          "type": "number",
+          "description": "The border corner radius."
+        }
+      }
+    },
+    "imageCropStyle": {
+      "$id": "/properties/imageCropStyle",
+      "type": "object",
+      "description": "A crop style that can be applied to images.",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The crop type.",
+          "enum": [
+            "SQUARE",
+            "CIRCLE",
+            "RECTANGLE_CUSTOM",
+            "RECTANGLE_4_3"
+          ]
+        },
+        "aspectRatio": {
+          "type": "number",
+          "description": "The aspect ratio for a custom rectangular crop."
+        }
+      }
+    },
+    "imageComponent": {
+      "$id": "/properties/imageComponent",
+      "type": "object",
+      "description": "An image and its properties.",
+      "required": ["imageUri"],
+      "properties": {
+        "imageUri": {
+          "type": "string",
+          "description": "The URL for the image resource."
+        },
+        "altText": {
+          "type": "string",
+          "description": "The accessibility label for the image."
+        },
+        "cropStyle": {
+          "$ref": "#/definitions/imageCropStyle",
+          "description": "The crop style to apply to the image."
+        },
+        "borderStyle": {
+          "$ref": "#/definitions/borderStyle",
+          "description": "The border style to apply to the image."
+        }
+      }
+    },
+    "grid": {
+      "$id": "/properties/grid",
+      "type": "object",
+      "description": "A grid that displays a collection of grid items.",
+      "required": [],
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "The title of the grid."
+        },
+        "items": {
+          "description": "List of grid items.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/griditem"
+          }
+        },
+        "borderStyle": {
+          "description": "The border style for the grid items.",
+          "$ref": "#/definitions/borderStyle"
+        },
+        "columnCount": {
+          "type": "number",
+          "description": "The number of columns in the grid."
+        },
+        "onClick": {
+          "description": "The action that executes when a grid item is clicked.",
+          "$ref": "#/definitions/onClick"
+        }
+      }
+    },
+    "griditem": {
+      "$id": "/properties/griditem",
+      "type": "object",
+      "description": "An item that can be displayed in a grid widget.",
+      "required": [],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "An identifier for the grid item."
+        },
+        "image": {
+          "description": "The image to display in the grid item.",
+          "$ref": "#/definitions/imageComponent"
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the grid item."
+        },
+        "subtitle": {
+          "type": "string",
+          "description": "The subtitle of the grid item."
+        },
+        "textAlignment": {
+          "description": "The text alignment for the grid item's text.",
+          "$ref": "#/definitions/horizontalAlignment"
+        },
+        "layout": {
+          "type": "string",
+          "description": "The grid item layout.",
+          "enum": [
+            "TEXT_BELOW",
+            "TEXT_ABOVE"
+          ]
+        }
+      }
+    },
+    "horizontalAlignment": {
+      "$id": "/properties/horizontalAlignment",
+      "type": "string",
+      "description": "Horizontal alignment options.",
+      "enum": [
+        "START",
+        "CENTER",
+        "END"
+      ]
+    },
+    "widget": {
+      "$id": "/properties/widget",
+      "type": "object",
+      "properties": {
+        "textParagraph": {
+          "type": "object",
+          "description": "Display a text paragraph in this widget",
+          "$ref": "#/definitions/textParagraph"
+        },
+        "image": {
+          "type": "object",
+          "description": "Display an image in this widget",
+          "$ref": "#/definitions/image"
+        },
+        "decoratedText": {
+          "type": "object",
+          "description": "Display a decorated text item in this widget",
+          "$ref": "#/definitions/decoratedText"
+        },
+        "buttonList": {
+          "type": "object",
+          "description": "A List of buttons",
+          "$ref": "#/definitions/buttonList"
+        },
+        "textInput": {
+          "type": "object",
+          "description": "Display a text input in this widget",
+          "$ref": "#/definitions/textInput"
+        },
+        "selectionInput": {
+          "type": "object",
+          "description": "Display a switch control in this widget",
+          "$ref": "#/definitions/selectionInput"
+        },
+        "dateTimePicker": {
+          "type": "object",
+          "description": "Display a date/time picker in this widget",
+          "$ref": "#/definitions/dateTimePicker"
+        },
+        "horizontalAlignment": {
+          "description": "The horizontal alignment of this widget.",
+          "$ref": "#/definitions/horizontalAlignment"
+        },
+        "divider": {
+          "description": "Inserts a divider.",
+          "$ref": "#/definitions/divider"
+        },
+        "grid": {
+          "description": "Display a grid control in this widget.",
+          "$ref": "#/definitions/grid"
+        }
+      }
+    },
+    "section": {
+      "$id": "/properties/section",
+      "type": "object",
+      "required": [
+        "widgets"
+      ],
+      "properties": {
+        "header": {
+          "type": "string",
+          "description": "The text header of a section"
+        },
+        "collapsible": {
+          "type": "boolean",
+          "description": "Whether section can be collapsed or not."
+        },
+        "widgets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/widget"
+          },
+          "description": "The widgets within a section. Example of a widget is TextParagraph or Image."
+        },
+        "uncollapsibleWidgetsCount": {
+          "type": "number",
+          "description": "The number of uncollapsable widgets"
+        }
+      }
+    },
+    "color": {
+      "$id": "/properties/color",
+      "type": "object",
+      "description": "Represents a color in the RGBA color space.",
+      "required": [
+        "red",
+        "green",
+        "blue"
+      ],
+      "properties": {
+        "red": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "The amount of red in the color as a value in the interval [0, 1]"
+        },
+        "green": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "The amount of green in the color as a value in the interval [0, 1]"
+        },
+        "blue": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "The amount of blue in the color as a value in the interval [0, 1]"
+        },
+        "alpha": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "The alpha value of the color as a value in the interval [0, 1]. 1 is sloid color and 0 is transparent"
+        }
+      }
+    },
+    "cardHeader": {
+      "$id": "/properties/cardHeader",
+      "type": "object",
+      "description": "Optional header in the card.",
+      "required": [
+        "title"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Required title in the header."
+        },
+        "subtitle": {
+          "type": "string",
+          "description": "Optional - renders beneath the title. If not specified, title will take up both lines."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "Optional - renders an image on the right of the title."
+        },
+        "imageType": {
+          "type": "string",
+          "enum": [
+            "SQUARE",
+            "CIRCLE"
+          ],
+          "description": "Define the cropping of the image in the header."
+        },
+        "imageAltText": {
+          "type": "string",
+          "description": "The Alternative text of this image"
+        }
+      }
+    },
+    "cardAction": {
+      "$id": "/properties/cardAction",
+      "description": "A Card action is the action associated with the card.",
+      "properties": {
+        "actionLabel": {
+          "type": "string",
+          "description": "The label used to be displayed in the action menu item."
+        },
+        "onClick": {
+          "type": "object",
+          "description": "The onClick action for this action item.",
+          "$ref": "#/definitions/onClick"
+        }
+      }
+    },
+    "cardFixedFooter": {
+      "$id": "/properties/cardFixedFooter",
+      "description": "A persistent (sticky) footer that is added to the bottom of the card.",
+      "properties": {
+        "primaryButton": {
+          "type": "object",
+          "description": "The Primary button of the fixed footer.",
+          "$ref": "#/definitions/button"
+        },
+        "secondaryButton": {
+          "type": "object",
+          "description": "The Secondary button of the fixed footer.",
+          "$ref": "#/definitions/button"
+        }
+      }
+    },
+    "card": {
+      "$id": "/properties/card",
+      "type": "object",
+      "required": [
+        "sections"
+      ],
+      "properties": {
+        "header": {
+          "type": "object",
+          "description": "The Header of the card.",
+          "$ref": "#/definitions/cardHeader"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/section"
+          },
+          "description": "A card consist of 1 or more sections. Widgets are defined within a section."
+        },
+        "cardActions": {
+          "type": "object",
+          "description": "The actions of this card.",
+          "$ref": "#/definitions/cardAction"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the card which is used as an identifier for the card in the card navigation."
+        },
+        "fixedFooter": {
+          "type": "object",
+          "description": "The fixed footer that is shown at the bottom of this card.",
+          "$ref": "#/definitions/cardFixedFooter"
+        },
+        "displayStyle": {
+          "type": "string",
+          "description": "The Display Style for the peekCardHeader.",
+          "enum": [
+            "DISPLAY_STYLE_UNSPECIFIED",
+            "PEEK",
+            "REPLACE"
+          ]
+        },
+        "peekCardHeader": {
+          "type": "object",
+          "description": "When displaying contextual content, the peek card header acts as a placeholder so that the user can\nnavigate forward between the homepage cards and the contextual cards.",
+          "$ref": "#/definitions/cardHeader"
+        }
+      }
+    },
+    "action": {
+      "$id": "/properties/action",
+      "type": "object",
+      "description": "An action that describes the behavior when a form is submitted - triggered from an onclick event on an input widget (e.g. button).",
+      "required": [
+        "function"
+      ],
+      "properties": {
+        "function": {
+          "description": "The apps script callback function or the https endpoint if using alternate runtimes.",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "type": "object",
+  "$ref": "#/definitions/card"
+}

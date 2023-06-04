@@ -1,0 +1,47 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "definitions": {
+      "gmailEventObject": {
+        "$id": "/properties/gmailEventObject",
+        "type": "object",
+        "description": "The Gmail event object is the portion of the overall event object that carries information about a user's Gmail messages. It's only present in an event object if the host application is Gmail.",
+        "properties": {
+          "messageId": {
+            "type": "string",
+            "description": "The ID of the currently open Gmail message."
+          },
+          "threadId": {
+            "type": "string",
+            "description": "The currently open Gmail thread ID."
+          },
+          "accessToken": {
+            "description": "The Gmail-specific access token. You can use this token with the \"X-Goog-Gmail-Access-Token\" HTTP header to grant your add-on temporary access to a user's currently open Gmail message or let your add-on compose new drafts.",
+            "type": "string"
+          },
+          "toRecipients": {
+            "type":"array",
+            "description": "The list of \"To:\" recipient email addresses currently included in a draft the add-on is composing",
+            "items": {
+              "type":"string"
+            }
+          },
+          "ccRecipients": {
+            "type":"array",
+            "description": "The list of \"CC:\" recipient email addresses currently included in a draft the add-on is composing",
+            "items": {
+              "type":"string"
+            }
+          },
+          "bccRecipients": {
+            "type":"array",
+            "description": "The list of \"BCC:\" recipient email addresses currently included in a draft the add-on is composing",
+            "items": {
+              "type":"string"
+            }
+          }
+        }
+      }
+    },
+    "$ref": "#/definitions/gmailEventObject"
+  }

@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "editor_client_action_markup": {
+      "$id": "/properties/editor_client_action_markup",
+      "type": "object",
+      "properties": {
+        "request_file_scope_for_active_document": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "type": "object",
+  "$ref": "#/definitions/editor_client_action_markup"
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "hostAppActionMarkup": {
+      "$id": "/properties/hostAppActionMarkup",
+      "type": "object",
+      "properties": {
+        "gmailAction": {
+          "$id": "/properties/gmailAction",
+          "type": "object",
+          "$ref": "./gmailSchema.json#/definitions/gmailClientActionMarkup"
+        },
+        "calendarAction": {
+          "$id": "/properties/calendarAction",
+          "type": "object",
+          "$ref": "./calendarSchema.json#/definitions/calendarClientActionMarkup"
+        },
+        "driveAction": {
+          "$id": "/properties/driveAction",
+          "type": "object",
+          "$ref": "./drive_schema.json#/definitions/drive_client_action_markup"
+        },
+        "editor_action": {
+          "$id": "/properties/editor_action",
+          "type": "object",
+          "$ref": "./editor_schema.json#/definitions/editor_client_action_markup"
+        }
+      },
+      "description": ""
+    }
+  },
+  "type": "object",
+  "$ref": "#/definitions/hostAppActionMarkup"
+}

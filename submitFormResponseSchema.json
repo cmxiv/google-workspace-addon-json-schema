@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "The response to a form submit from the add-on.  The most common response will contain a navigation of cards - e.g.  pushing a card to render content to reflected the modified content.",
+  "definitions": {
+    "submitFormResponse": {
+      "$id": "/properties/submitFormResponse",
+      "type": "object",
+      "required": ["renderActions"],
+      "properties": {
+        "renderActions": {
+          "type" : "object",
+          "$ref": "./renderActionSchema.json#/definitions/renderAction"
+        },
+        "stateChanged": {
+          "type" : "boolean",
+          "description": "Whether the state of the cards has changed and data in existing cards is stale."
+        }
+      }
+    }
+  },
+  "type": "object",
+  "$ref": "#/definitions/submitFormResponse"
+}
