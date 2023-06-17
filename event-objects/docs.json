@@ -19,7 +19,7 @@
                 "matchedUrl": {
                     "$id": "/properties/matchedUrlObject",
                     "type": "object",
-                    "description": "Object that contains the URL that matches the pattern set in the link preview trigger."
+                    "description": "Object that contains the URL that matches the pattern set in the link preview trigger.",
                     "properties": {
                         "url": {
                             "type": "string",

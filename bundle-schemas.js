@@ -3,7 +3,7 @@ import { bundle } from "@hyperjump/json-schema/bundle";
 import { readFile } from 'fs/promises';
 
 await addSchemaFile("./event-objects/common.json")
-// await addSchemaFile("./event-objects/docs.json")
+await addSchemaFile("./event-objects/docs.json")
 await addSchemaFile("./event-objects/gmail.json")
 await addSchemaFile("./event-objects/calendar.json")
 await addSchemaFile("./event-objects/google-sheets.json")
