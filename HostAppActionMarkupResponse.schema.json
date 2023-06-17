@@ -9,22 +9,22 @@
                 "gmailAction": {
                     "$id": "/properties/gmailAction",
                     "type": "object",
-                    "$ref": "gmail-client-action-markup.json#/definitions/gmailClientActionMarkup"
+                    "$ref": "GmailClientActionMarkupResponse.schema.json#/definitions/gmailClientActionMarkup"
                 },
                 "calendarAction": {
                     "$id": "/properties/calendarAction",
                     "type": "object",
-                    "$ref": "calendar-client-action-markup.json#/definitions/calendarClientActionMarkup"
+                    "$ref": "CalendarClientActionMarkupResponse.schema.json#/definitions/calendarClientActionMarkup"
                 },
                 "driveAction": {
                     "$id": "/properties/driveAction",
                     "type": "object",
-                    "$ref": "drive-client-action-markup.json#/definitions/driveClientActionMarkup"
+                    "$ref": "DriveClientActionMarkupResponse.schema.json#/definitions/driveClientActionMarkup"
                 },
                 "editor_action": {
                     "$id": "/properties/editor_action",
                     "type": "object",
-                    "$ref": "editor-client-action-markup.json#/definitions/editor_client_action_markup"
+                    "$ref": "EditorClientActionMarkupResponse.schema.json#/definitions/editor_client_action_markup"
                 }
             },
             "description": ""

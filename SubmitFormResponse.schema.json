@@ -12,7 +12,7 @@
             "properties": {
                 "renderActions": {
                     "type": "object",
-                    "$ref": "render-action.json#/definitions/renderAction"
+                    "$ref": "RenderActionResponse.schema.json#/definitions/renderAction"
                 },
                 "stateChanged": {
                     "type": "boolean",
