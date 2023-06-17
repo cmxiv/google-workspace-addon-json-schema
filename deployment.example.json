@@ -1,0 +1,143 @@
+{
+  "addOns": {
+    "common": {
+      "name": "Demo Google Workspace Add-on",
+      "logoUrl": "https://ssl.gstatic.com/docs/script/images/logo/script-64.png",
+      "homepageTrigger": {
+        "enabled": true,
+        "runFunction": "onDefaultHomePageOpen"
+      },
+      "layoutProperties": {
+        "primaryColor": "#ff392b",
+        "secondaryColor": "#d68617"
+      },
+      "openLinkUrlPrefixes": [
+        "https://mail.google.com/",
+        "https://script.google.com/a/google.com/d/",
+        "https://drive.google.com/a/google.com/file/d/",
+        "https://en.wikipedia.org/wiki/",
+        "https://www.example.com/"
+      ],
+      "universalActions": [
+        {
+          "label": "Open settings",
+          "openLink": "",
+          "runFunction": "getSettingsCard"
+        },
+        {
+          "label": "Open Help URL",
+          "openLink": "https://www.example.com/help",
+          "runFunction": "getHelpUrl"
+        }
+      ],
+      "useLocaleFromApp": true
+    },
+    "calendar": {
+      "conferenceSolution": [
+        {
+          "id": "my-video-conf",
+          "logoUrl": "https://lh3.googleusercontent.com/...",
+          "name": "My Video Conference",
+          "onCreateFunction": "onCreateMyVideoConference"
+        },
+        {
+          "id": "my-streamed-conf",
+          "logoUrl": "https://lh3.googleusercontent.com/...",
+          "name": "My Streamed Conference",
+          "onCreateFunction": "onCreateMyStreamedConference"
+        }
+      ],
+      "createSettingsUrlFunction":"",
+      "currentEventAccess": "READ_WRITE",
+      "eventAttachmentTrigger": {
+        "label": "My Event Attachment",
+        "runFunction": "onCalendarEventAddAttachment"
+      },
+      "eventOpenTrigger": {
+        "runFunction": "onCalendarEventOpen"
+      },
+      "eventUpdateTrigger": {
+        "runFunction": "onCalendarEventUpdate"
+      },
+      "homepageTrigger": {
+        "enabled": true,
+        "runFunction": ""
+      }
+    },
+    "docs": {
+      "homepageTrigger": {
+        "enabled": true,
+        "runFunction": "onEditorsHomepage"
+      },
+      "onFileScopeGrantedTrigger": {
+        "runFunction": "onFileScopeGrantedEditors"
+      }
+    },
+    "drive": {
+      "homepageTrigger": {
+        "enabled": true,
+        "runFunction": "onDriveHomePageOpen"
+      },
+      "onItemsSelectedTrigger":{
+        "runFunction": "onDriveItemsSelected"
+      }
+    },
+    "gmail": {
+      "composeTrigger": {
+        "actions": [
+          {
+            "label": "Add images to email",
+            "logoUrl": "",
+            "runFunction": "getInsertImageComposeCards"
+          }
+        ],
+        "draftAccess": "METADATA"
+      },
+      "contextualTriggers": [
+        {
+          "onTriggerFunction": "onGmailMessageOpen",
+          "unconditional": {}
+        }
+      ],
+      "homepageTrigger": {
+        "enabled": true,
+        "runFunction": ""
+      }
+    },
+    "sheets": {
+      "homepageTrigger": {
+        "enabled": false,
+        "runFunction": "onEditorsHomepage"
+      },
+      "onFileScopeGrantedTrigger": {
+        "runFunction": "onFileScopeGrantedEditors"
+      }
+    },
+    "slides": {
+      "homepageTrigger": {
+        "enabled": true,
+        "runFunction": "onEditorsHomepage"
+      },
+      "onFileScopeGrantedTrigger": {
+        "runFunction": "onFileScopeGrantedEditors"
+      }
+    }
+  },
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/calendar.addons.execute",
+    "https://www.googleapis.com/auth/calendar.addons.current.event.read",
+    "https://www.googleapis.com/auth/calendar.addons.current.event.write",
+    "https://www.googleapis.com/auth/drive.addons.metadata.readonly",
+    "https://www.googleapis.com/auth/gmail.addons.current.action.compose",
+    "https://www.googleapis.com/auth/gmail.addons.current.message.metadata",
+    "https://www.googleapis.com/auth/userinfo.email",
+    "https://www.googleapis.com/auth/script.external_request",
+    "https://www.googleapis.com/auth/script.locale",
+    "https://www.googleapis.com/auth/script.scriptapp",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/documents.currentonly",
+    "https://www.googleapis.com/auth/spreadsheets.currentonly",
+    "https://www.googleapis.com/auth/presentations.currentonly",
+    "https://www.googleapis.com/auth/workspace.linkpreview"
+  ]
+}
