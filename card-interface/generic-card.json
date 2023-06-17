@@ -691,7 +691,7 @@
                     "type": "number",
                     "minimum": 0,
                     "maximum": 1,
-                    "description": "The alpha value of the color as a value in the interval [0, 1]. 1 is sloid color and 0 is transparent"
+                    "description": "The alpha value of the color as a value in the interval [0, 1]. 1 is solid color and 0 is transparent"
                 }
             }
         },
