@@ -1,0 +1,13 @@
+{
+  "name": "google-workspace-addon-json-schema",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "JSON schema files required while developing Google Workspace add-ons with alternative runtimes",
+  "main": "bundle-schemas.js",
+  "repository": "https://github.com/cmxiv/google-workspace-addon-json-schema",
+  "author": "Siddhant Tandon",
+  "license": "MIT",
+  "dependencies": {
+    "quicktype-core": "^23.0.48"
+  }
+}
