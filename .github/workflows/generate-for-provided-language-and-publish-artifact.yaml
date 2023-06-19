@@ -1,0 +1,42 @@
+on:
+  workflow_call:
+    inputs:
+      language:
+        required: true
+        type: string
+      extension:
+        required: true
+        type: string
+jobs:
+  generate:
+    name: "Generate Typescript types"
+    runs-on: ubuntu-latest
+    steps:
+      - id: setup-node
+        name: 'Setup Node 18'
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+      - id: pull-latest-from-main
+        name: 'Get latest codebase from main'
+        uses: actions/checkout@v2
+        with:
+          ref: main
+      - id: install-quicktype
+        name: 'Install quicktype'
+        run: |
+          npm install -g quicktype
+      - id: generate-types
+        name: 'Generate types'
+        run: |
+          mkdir generated
+          quicktype --just-types --lang ${{ inputs.language }} -s schema --src RenderActionResponse.schema.json -o generated/RenderAction.${{ inputs.extension }}
+          quicktype --just-types --lang ${{ inputs.language }} -s schema --src Card.schema.json -o generated/Card.${{ inputs.extension }}
+          quicktype --just-types --lang ${{ inputs.language }} -s schema --src CommonEvent.schema.json -o generated/Event.${{ inputs.extension }}
+          quicktype --just-types --lang ${{ inputs.language }} -s schema --src Deployment.schema.json -o generated/Deployment.${{ inputs.extension }}
+      - id: upload-generated-types-as-artifacts
+        name: 'Upload generated types as artifacts'
+        uses: actions/upload-artifact@v3
+        with:
+          name: google-workspace-addon-${{ inputs.language }}-types
+          path: generated
