@@ -31,7 +31,9 @@ jobs:
           quicktype --just-types --lang typescript -s schema --src Card.schema.json -o generated/Card.ts
           quicktype --just-types --lang typescript -s schema --src CommonEvent.schema.json -o generated/Event.ts
           quicktype --just-types --lang typescript -s schema --src Deployment.schema.json -o generated/Deployment.ts
-      - id: list
-        name: 'List all'
-        run: |
-          ls -lrta generated
+      - id: upload-generated-typescript-types-as-artifacts
+        name: 'Upload generated typescript types as artifacts'
+        uses: actions/upload-artifact@v3
+        with:
+          name: google-workspace-addon-typescript-types
+          path: generated
