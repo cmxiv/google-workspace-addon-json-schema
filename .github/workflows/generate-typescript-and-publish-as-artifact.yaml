@@ -11,3 +11,4 @@ jobs:
     with:
       language: typescript
       extension: ts
+      flags: --just-types
