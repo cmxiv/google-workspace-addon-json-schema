@@ -1,0 +1,36 @@
+name: "Generate Typescript Types"
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+jobs:
+  generate:
+    name: "Generate Typescript types"
+    runs-on: ubuntu-latest
+    steps:
+      - id: setup-node
+        name: 'Setup Node 18'
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+      - id: setup-yarn
+        name: 'Setup yarn'
+        run: npm install --global yarn
+      - id: pull-latest-from-main
+        name: 'Get latest codebase from main'
+        uses: actions/checkout@v2
+        with:
+          ref: main
+      - id: install-packages
+        name: 'Install packages'
+        run: yarn
+      - id: generate-types
+        name: 'Generate types'
+        run: yarn generate:ts
+      - id: upload-generated-types-as-artifacts
+        name: 'Upload generated types as artifacts'
+        uses: actions/upload-artifact@v3
+        with:
+          name: google-workspace-addon-typescript-types
+          path: generated
