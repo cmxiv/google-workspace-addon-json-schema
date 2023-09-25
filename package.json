@@ -1,0 +1,6 @@
+{
+  "license": "mit",
+  "dependencies": {
+    "quicktype": "^23.0.57"
+  }
+}
