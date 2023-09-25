@@ -12,7 +12,7 @@ fi
 
 FLAGS=""
 if test "$1" = "typescript"; then
-  FLAGS="--just-types --prefer-types"
+  FLAGS=""
 fi
 
 echo "⏳  Generating types in 'generated' folder..."
