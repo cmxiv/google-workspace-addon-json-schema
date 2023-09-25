@@ -1,6 +1,11 @@
 {
-  "license": "mit",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf generated",
+    "generate:kt": "sh generate.sh kotlin kt",
+    "generate:ts": "sh generate.sh typescript ts"
+  },
   "dependencies": {
-    "quicktype": "^23.0.57"
+    "quicktype": "^23.0.75"
   }
 }
