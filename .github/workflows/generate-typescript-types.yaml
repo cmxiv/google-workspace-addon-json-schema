@@ -11,7 +11,7 @@ jobs:
     steps:
       - id: setup-node
         name: 'Setup Node 18'
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '18'
       - id: setup-yarn
@@ -19,7 +19,7 @@ jobs:
         run: npm install --global yarn
       - id: pull-latest-from-main
         name: 'Get latest codebase from main'
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           ref: main
       - id: install-packages
