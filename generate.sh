@@ -13,7 +13,9 @@ fi
 echo "⏳  Generating types in 'generated' folder..."
 
 if test "$1" = "typescript"; then
-  quicktype --just-types --prefer-types --lang "$1" -s schema --src *.schema.json -o generated/"$1"/index.d.ts
+  quicktype --just-types --lang typescript -s schema --src RenderActionResponse.schema.json --src Card.schema.json -o generated/"$1"/Card.ts
+  quicktype --just-types --lang typescript -s schema --src CommonEvent.schema.json -o generated/"$1"/Event.ts
+  quicktype --just-types --lang typescript -s schema --src Deployment.schema.json -o generated/"$1"/Deployment.ts
 else
   quicktype --lang "$1" -s schema --src SubmitFormResponse.schema.json -o generated/"$1"/SubmitFormResponse."$2"
   quicktype --lang "$1" -s schema --src Card.schema.json -o generated/"$1"/Card."$2"

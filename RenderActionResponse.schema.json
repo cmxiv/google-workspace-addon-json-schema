@@ -87,6 +87,7 @@
             }
         }
     },
+    "title": "Render Action Response",
     "type": "object",
     "$ref": "#/definitions/renderAction"
 }

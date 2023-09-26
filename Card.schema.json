@@ -824,6 +824,7 @@
             }
         }
     },
+    "title": "Card",
     "type": "object",
     "$ref": "#/definitions/card"
 }
