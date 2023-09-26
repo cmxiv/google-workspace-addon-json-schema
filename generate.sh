@@ -10,15 +10,15 @@ if [ ! -d "./generated/$1" ]; then
   mkdir generated/"$1"
 fi
 
-FLAGS=""
-if test "$1" = "typescript"; then
-  FLAGS=""
-fi
-
 echo "⏳  Generating types in 'generated' folder..."
-yarn run quicktype $FLAGS --lang "$1" -s schema --src SubmitFormResponse.schema.json -o generated/"$1"/SubmitFormResponse."$2"
-yarn run quicktype $FLAGS --lang "$1" -s schema --src Card.schema.json -o generated/"$1"/Card."$2"
-yarn run quicktype $FLAGS --lang "$1" -s schema --src CommonEvent.schema.json -o generated/"$1"/Event."$2"
-yarn run quicktype $FLAGS --lang "$1" -s schema --src Deployment.schema.json -o generated/"$1"/Deployment."$2"
+
+if test "$1" = "typescript"; then
+  quicktype --just-types --lang "$1" -s schema --src *.schema.json -o generated/"$1"/index.d.ts
+else
+  yarn run quicktype --lang "$1" -s schema --src SubmitFormResponse.schema.json -o generated/"$1"/SubmitFormResponse."$2"
+  yarn run quicktype --lang "$1" -s schema --src Card.schema.json -o generated/"$1"/Card."$2"
+  yarn run quicktype --lang "$1" -s schema --src CommonEvent.schema.json -o generated/"$1"/Event."$2"
+  yarn run quicktype --lang "$1" -s schema --src Deployment.schema.json -o generated/"$1"/Deployment."$2"
+fi
 
 echo "✅  Types generated!"
