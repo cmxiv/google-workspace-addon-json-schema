@@ -52,8 +52,9 @@
                 },
                 "hostApp": {
                     "type": "string",
-                    "description": "Indicates the host app the add-on is active in when the event object is generated. Possible values include the following:\nGMAIL\nCALENDAR\nDRIVE",
+                    "description": "Indicates the host app the add-on is active in when the event object is generated. Possible values include the following:\nSHEETS\nGMAIL\nCALENDAR\nDRIVE",
                     "enum": [
+                        "SHEETS",
                         "GMAIL",
                         "DRIVE",
                         "CALENDAR"
