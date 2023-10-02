@@ -54,6 +54,7 @@
                     "type": "string",
                     "description": "Indicates the host app the add-on is active in when the event object is generated. Possible values include the following:\nDOCS\nSHEETS\nGMAIL\nCALENDAR\nDRIVE",
                     "enum": [
+                        "SLIDES",
                         "DOCS",
                         "SHEETS",
                         "GMAIL",
