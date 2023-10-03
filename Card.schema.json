@@ -820,6 +820,32 @@
                 "function": {
                     "description": "The apps script callback function or the https endpoint if using alternate runtimes.",
                     "type": "string"
+                },
+                "parameters": {
+                    "description": "The apps script callback function or the https endpoint if using alternate runtimes.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/actionParameter"
+                    }
+                }
+            }
+        },
+        "actionParameter": {
+            "$id": "/properties/actionParameter",
+            "type": "object",
+            "description": "List of string parameters to supply when the action method is invoked.",
+            "required": [
+                "key",
+                "value"
+            ],
+            "properties": {
+                "key": {
+                    "description": "The name of the parameter for the action script.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The value of the parameter.",
+                    "type": "string"
                 }
             }
         }
