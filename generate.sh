@@ -13,7 +13,7 @@ fi
 echo "⏳  Generating types in 'generated' folder..."
 
 if test "$1" = "typescript"; then
-  quicktype --just-types --lang typescript -s schema --src RenderActionResponse.schema.json --src Card.schema.json -o generated/"$1"/Card.ts
+  quicktype --just-types --lang typescript -s schema --src SubmitFormResponse.schema.json --src Card.schema.json -o generated/"$1"/Card.ts
   quicktype --just-types --lang typescript -s schema --src CommonEvent.schema.json -o generated/"$1"/Event.ts
   quicktype --just-types --lang typescript -s schema --src Deployment.schema.json -o generated/"$1"/Deployment.ts
 

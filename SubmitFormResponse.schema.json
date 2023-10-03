@@ -21,6 +21,7 @@
             }
         }
     },
+    "title": "Submit form response",
     "type": "object",
     "$ref": "#/definitions/submitFormResponse"
 }
